@@ -6,14 +6,14 @@ BOT_TOKEN=bot_YOUR_BOT_TOKEN_API
 CHAT_ID=YOUR_CHAT_ID
 
 # output example:
-#{
+# {
 #   "status" : "success",
 #   "payload" : {
 #      "en" : "Success",
 #      "code" : "success"
 #   },
 #   "statusCode" : 200
-#}
+# }
 
 # we are going to retrieve response status and the code
 
@@ -21,7 +21,7 @@ response="$(curl -s $site | json_pp | grep '"status" :' | awk -F '"' '{print $4}
 code="$(curl -s $site | json_pp | grep '"statusCode" :' | awk -F'[, \t]*' '{print $4}')"
 
 # conditional to handle if API is down
-if [ "$response" == "success"  ]
+if [ "$response" != "success"  ]
 then
         text="WARNING! Your API is down with status code = $code"
 

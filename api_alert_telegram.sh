@@ -16,6 +16,9 @@ CHAT_ID=YOUR_CHAT_ID
 # }
 
 # we are going to retrieve response status and the code
+# if you want to get response code from usual sites you can use this:
+# curl -s -i https://ramperto.github.io | grep HTTP | awk '{print $2}'
+# using my personal git page for reference
 
 response="$(curl -s $site | json_pp | grep '"status" :' | awk -F '"' '{print $4}')"
 code="$(curl -s $site | json_pp | grep '"statusCode" :' | awk -F'[, \t]*' '{print $4}')"

@@ -6,7 +6,7 @@ BOT_TOKEN=bot_YOUR_BOT_TOKEN_API
 CHAT_ID=YOUR_CHAT_ID
 
 # output example:
-# {
+# {qweryuip
 #   "status" : "success",
 #   "payload" : {
 #      "en" : "Success",

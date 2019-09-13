@@ -20,6 +20,9 @@ CHAT_ID=YOUR_CHAT_ID
 # curl -s -i https://ramperto.github.io | grep HTTP | awk '{print $2}'
 # using my personal git page for reference
 
+# add cron for this script
+# * * * * * api_alert_telegram.sh
+
 response="$(curl -s $site | json_pp | grep '"status" :' | awk -F '"' '{print $4}')"
 code="$(curl -s $site | json_pp | grep '"statusCode" :' | awk -F'[, \t]*' '{print $4}')"
 

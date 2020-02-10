@@ -1,0 +1,14 @@
+monthly:
+awk '{a=gensub(/.* \[([^:]*):.*/,"\\1","1",$0);gsub(/\//,"-",a);"date --date=\""a"\" +\"%Y\"-\"%m\"-\"%b\"" | getline b; print > "/tmp/nginx-"b".log"}' ~/access.log
+
+weekly:
+awk '{a=gensub(/.* \[([^:]*):.*/,"\\1","1",$0);gsub(/\//,"-",a);"date --date=\""a"\" +\"%Y\"-week-\"%U\"" | getline b; print > "/tmp/nginx-"b".log"}' ~/access.log
+
+by daily:
+awk '{a=gensub(/.* \[([^:]*):.*/,"\\1","1",$0);gsub(/\//,"-",a);"date --date=\""a"\" +\"%F\"" | getline b; print > "/tmp/nginx-"b".log"}' ~/access.log
+
+hourly:
+awk '{a=gensub(/.* \[([^ ]*) .*/,"\\1","1",$0);a=gensub(/\:/," ","1",a);gsub(/\//,"-",a);"date --date=\""a"\" +\"%F\"-hour-\"%H\"" | getline b; print > "/tmp/nginx-"b".log"}' ~/access.log
+
+reference:
+https://axdlog.com/2017/splitting-nginx-log-by-date-via-gnu-awk/
